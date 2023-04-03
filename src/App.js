@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Space } from "antd";
+import React, { useState, createContext } from "react";
+import FormComponent from "./FormComponent";
+import TableComponent from "./TableComponent";
+export const UserContext = createContext();
 
 function App() {
+  const [input, setInput] = useState("");
+  const [display, setDisplay] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <UserContext.Provider value={{ display, setDisplay, input, setInput }}>
+      <Space className="   w-screen h-screen  bg-gray-500 flex  flex-col items-center  justify-start ">
+        <p className="   text-yellow-400  font-bold  text-5xl  my-10  mt-20 ">
+          {" "}
+          TODO APP{" "}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <Space className=" flex flex-row pt-10 "></Space>
+        <FormComponent></FormComponent>
+        <TableComponent></TableComponent>
+      </Space>
+    </UserContext.Provider>
   );
 }
 
